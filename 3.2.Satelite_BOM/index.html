@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ventana madre</title>
 </head>
 <body>
     
+<h1>Ventana Madre</h1>
+  <button id="botonLanzar">Lanzar Ventana Satélite</button>
+
+  <script>
+    document.getElementById("botonLanzar").addEventListener("click", () => {
+      // Tamaño fijo de la ventana satélite
+      const w = 400;
+      const h = 300;
+
+      // Cálculo de la posición centrada con las dimensiones del monitor
+      const left = Math.floor((screen.availWidth - w) / 2);
+      const top = Math.floor((screen.availHeight - h) / 2);
+
+      // Apertura de la ventana satélite
+      window.open(
+        "satelite.html",
+        "satelite",
+        `width=${w},height=${h},left=${left},top=${top}`
+      );
+    });
+  </script>
+
 </body>
 </html>
