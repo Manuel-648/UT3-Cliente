@@ -13,6 +13,8 @@
 
   <button id="botonConHistorial">Redirigir con Historial</button>
   <button id="botonSinHistorial">Redirigir sin Historial</button>
+  <button id="botonAutodestruccion">Autodestrucción en 5 segundos</button>
+  <p id="cuenta"></p>
 
   <script>
     // Detectar el sistema operativo con navigator.userAgent
@@ -29,7 +31,7 @@
 
     // Mensaje de bienvenida en el HTML
     document.getElementById("bienvenida").textContent =
-      "¡Bienvenido, ususerAgentrio de " + so + "!";
+        "¡Bienvenido, usuario de " + so + "!";
 
     // Redirigir la ventana madre CON historial (assign)
     document.getElementById("botonConHistorial").addEventListener("click", () => {
@@ -48,6 +50,24 @@
         alert("La ventana madre no está disponible.");
       }
     });
+
+    // Autodestrucción con cuenta atrás
+    document.getElementById("botonAutodestruccion").addEventListener("click", () => {
+      let segundos = 5;
+      const cuenta = document.getElementById("cuenta");
+      cuenta.textContent = "Cerrando en " + segundos + "...";
+
+      // Actualiza el mensaje cada segundo
+      const intervalo = setInterval(() => {
+        segundos--;
+        cuenta.textContent = "Cerrando en " + segundos + "...";
+        if (segundos <= 0) clearInterval(intervalo);
+      }, 1000);
+
+      // Cierra la ventana a los 5 segundos
+      setTimeout(() => window.close(), 5000);
+    });
+
   </script>
 
 </body>
