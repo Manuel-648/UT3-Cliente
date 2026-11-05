@@ -3,9 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ventana satélite</title>
 </head>
 <body>
-    
+
+    <h2>Ventana Satélite</h2>
+
+  <p id="bienvenida"></p>
+
+  <button id="botonConHistorial">Redirigir con Historial</button>
+  <button id="botonSinHistorial">Redirigir sin Historial</button>
+
+  <script>
+    // Detectar el sistema operativo con navigator.userAgent
+    const userAgent = navigator.userAgent;
+    let so = "un sistema desconocido";
+
+    if (userAgent.includes("Win")) {
+      so = "Windows";
+    } else if (userAgent.includes("Mac")) {
+      so = "Mac";
+    } else if (userAgent.includes("Linux")) {
+      so = "Linux";
+    }
+
+    // Mensaje de bienvenida en el HTML
+    document.getElementById("bienvenida").textContent =
+      "¡Bienvenido, ususerAgentrio de " + so + "!";
+
+    // Redirigir la ventana madre CON historial (assign)
+    document.getElementById("botonConHistorial").addEventListener("click", () => {
+      if (window.opener) {
+        window.opener.location.assign("https://www.ilerna.es");
+      } else {
+        alert("La ventana madre no está disponible.");
+      }
+    });
+
+    // Redirigir la ventana madre SIN historial (replace)
+    document.getElementById("botonSinHistorial").addEventListener("click", () => {
+      if (window.opener) {
+        window.opener.location.replace("https://www.ilerna.es");
+      } else {
+        alert("La ventana madre no está disponible.");
+      }
+    });
+  </script>
+
 </body>
 </html>
